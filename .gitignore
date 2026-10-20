@@ -1,0 +1,20 @@
+# downloaded source reports (re-create with: python scripts/fetch.py --ginnie --fhlb --gfee --fdic)
+raw/
+
+# runtime files
+logs/
+data/mcr.pid
+data/last_stopped.json
+
+# python / tooling caches
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+.env
+
+# frontend (rebuild with: cd web && npm install && npm run build)
+web/node_modules/
+web/dist/
+*.tsbuildinfo

@@ -1,0 +1,117 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+
+/* ---- Aurora Glass design tokens ---- */
+@theme {
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --color-ink-950: #050914;
+  --color-ink-900: #0a1122;
+  --color-ink-800: #101a33;
+  --color-ink-700: #1a2646;
+  --color-ink-600: #263458;
+
+  --color-aurora-teal: #2dd4bf;
+  --color-aurora-cyan: #22d3ee;
+  --color-aurora-emerald: #34d399;
+  --color-aurora-violet: #8b7cf6;
+  --color-aurora-blue: #4f8cff;
+
+  --color-fg: #e8eefc;
+  --color-muted: #9aa8c4;
+  --color-subtle: #7585a6;
+
+  --color-pos: #34d399;
+  --color-neg: #fb7185;
+  --color-neutral: #7dd3fc;
+  --color-warn: #fbbf24;
+
+  --radius-glass: 1.1rem;
+  --shadow-glass: 0 10px 40px -12px rgb(2 6 23 / 0.7), inset 0 1px 0 0 rgb(255 255 255 / 0.06);
+  --shadow-glow: 0 0 0 1px rgb(45 212 191 / 0.35), 0 0 32px -6px rgb(45 212 191 / 0.35);
+}
+
+html { color-scheme: dark; }
+body {
+  margin: 0;
+  background: var(--color-ink-950);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  font-feature-settings: "cv11", "ss01";
+  -webkit-font-smoothing: antialiased;
+}
+
+/* financial numbers: tabular, never proportional */
+.tnum { font-variant-numeric: tabular-nums lining-nums; font-feature-settings: "tnum" 1, "lnum" 1; }
+
+/* ---- Glass surfaces ---- */
+.glass {
+  background: linear-gradient(145deg, rgb(24 36 68 / 0.62), rgb(11 18 38 / 0.72));
+  border: 1px solid rgb(176 198 255 / 0.12);
+  border-radius: var(--radius-glass);
+  box-shadow: var(--shadow-glass);
+  -webkit-backdrop-filter: blur(16px) saturate(135%);
+  backdrop-filter: blur(16px) saturate(135%);
+}
+/* data-dense surfaces (tables, charts): light blur, high opacity so numbers stay crisp */
+.glass-data {
+  background: linear-gradient(160deg, rgb(15 24 48 / 0.9), rgb(9 15 32 / 0.94));
+  border: 1px solid rgb(176 198 255 / 0.1);
+  border-radius: var(--radius-glass);
+  box-shadow: var(--shadow-glass);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+.glass-hover { transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease; }
+.glass-hover:hover { transform: translateY(-2px); border-color: rgb(45 212 191 / 0.35); box-shadow: var(--shadow-glass), 0 0 28px -10px rgb(45 212 191 / 0.4); }
+
+/* graceful fallback where backdrop-filter is unsupported: solid, readable surfaces */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass { background: rgb(14 23 46 / 0.96); }
+  .glass-data { background: rgb(10 17 35 / 0.98); }
+}
+
+.aurora-text {
+  background: linear-gradient(100deg, #5eead4 0%, #67e8f9 40%, #a5b4fc 80%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+/* ---- Aurora backdrop ---- */
+.aurora { position: fixed; inset: 0; z-index: -10; overflow: hidden; pointer-events: none;
+  background: radial-gradient(1200px 700px at 80% -10%, rgb(30 41 120 / 0.55), transparent 60%),
+              linear-gradient(180deg, #060b1a 0%, #050914 60%, #04070f 100%); }
+.aurora__blob { position: absolute; border-radius: 9999px; filter: blur(90px); opacity: 0.38; will-change: transform; }
+.aurora__blob--teal { width: 46vw; height: 36vw; left: -10vw; top: -6vw; background: radial-gradient(circle, #14b8a6, transparent 70%); animation: drift-a 48s ease-in-out infinite alternate; }
+.aurora__blob--violet { width: 42vw; height: 34vw; right: -8vw; top: 10vh; background: radial-gradient(circle, #7c6df0, transparent 70%); animation: drift-b 56s ease-in-out infinite alternate; }
+.aurora__blob--blue { width: 50vw; height: 30vw; left: 22vw; bottom: -14vw; background: radial-gradient(circle, #2563eb, transparent 70%); opacity: 0.3; animation: drift-c 64s ease-in-out infinite alternate; }
+.aurora__veil { position: absolute; inset: 0; background: linear-gradient(115deg, transparent 30%, rgb(52 211 153 / 0.05) 48%, transparent 66%); }
+@keyframes drift-a { to { transform: translate3d(8vw, 6vh, 0) scale(1.08); } }
+@keyframes drift-b { to { transform: translate3d(-9vw, 8vh, 0) scale(1.1); } }
+@keyframes drift-c { to { transform: translate3d(-6vw, -7vh, 0) scale(1.06); } }
+
+@keyframes shimmer { 100% { transform: translateX(100%); } }
+@keyframes drawer-in { from { transform: translateX(-100%); } to { transform: none; } }
+@keyframes scrim-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes page-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.page-enter { animation: page-in 200ms ease-out both; }
+.drawer-enter { animation: drawer-in 220ms ease-out; }
+.scrim-enter { animation: scrim-in 200ms ease-out; }
+.skeleton { position: relative; overflow: hidden; background: rgb(148 163 205 / 0.1); border-radius: 0.6rem; }
+.skeleton::after { content: ""; position: absolute; inset: 0; transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.07), transparent); animation: shimmer 1.6s infinite; }
+
+/* ---- Focus + scrollbars ---- */
+:focus-visible { outline: 2px solid var(--color-aurora-cyan); outline-offset: 2px; border-radius: 0.5rem; }
+.scroll-thin { scrollbar-width: thin; scrollbar-color: rgb(120 140 190 / 0.4) transparent; }
+
+/* Recharts tooltips/legend on dark */
+.recharts-default-tooltip { background: transparent !important; border: 0 !important; }
+.recharts-cartesian-axis-tick-value { fill: var(--color-muted); font-size: 11px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora__blob { animation: none !important; }
+  .skeleton::after { animation: none !important; }
+  .drawer-enter, .scrim-enter, .page-enter { animation: none !important; }
+  .glass-hover:hover { transform: none; }
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
+}

@@ -1,0 +1,37 @@
+[
+  {
+    "key": "fannie-mae",
+    "name": "Fannie Mae",
+    "kind": "gse",
+    "provider": "Fannie Mae"
+  },
+  {
+    "key": "gnma",
+    "name": "GNMA",
+    "kind": "gnma"
+  },
+  {
+    "key": "freddie-mac",
+    "name": "Freddie Mac",
+    "kind": "gse",
+    "provider": "Freddie Mac"
+  },
+  {
+    "key": "fhlbs",
+    "name": "FHLBs",
+    "kind": "fhlb",
+    "note": "Federal Home Loan Banks"
+  },
+  {
+    "key": "gse-gfee",
+    "name": "GSE GFEE",
+    "kind": "gfee",
+    "note": "FHFA Single-Family Guarantee Fees (annual)"
+  },
+  {
+    "key": "fdic",
+    "name": "FDIC",
+    "kind": "fdic",
+    "note": "Federal Deposit Insurance Corporation - Deposit Insurance Fund"
+  }
+]

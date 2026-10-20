@@ -1,0 +1,11 @@
+{
+  "primary_provider": "Fannie Mae",
+  "ratio_decimals": 2,
+  "filename_pattern": "^(?P<provider>.+?)_(?P<date>\\d{8})_disclosure\\.(?:xlsx|csv)$",
+  "allowed_extensions": [
+    ".pdf",
+    ".xlsx",
+    ".csv",
+    ".zip"
+  ]
+}

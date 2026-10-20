@@ -1,0 +1,178 @@
+[
+  {
+    "number": 1,
+    "key": "leverage_cet1_gses",
+    "name": "Leverage based CET1 (GSEs)",
+    "status": "confirmed",
+    "description": "GNMA Total Maximum Exposure to Loss multiplied by the 1% leverage-based CET1 adjustment.",
+    "formula": "gnma_total_exposure * adjustment_pct",
+    "assumptions": {
+      "adjustment_pct": "0.01"
+    },
+    "assumption_meta": {
+      "adjustment_pct": {
+        "label": "Adjustment percentage",
+        "unit": "fraction (0.01 = 1%)",
+        "min": "0",
+        "max": "1",
+        "min_exclusive": true
+      }
+    },
+    "reference": "Business specification: Leverage based CET1 (GSEs) = GNMA Total Maximum Exposure to Loss × 1%."
+  },
+  {
+    "number": 2,
+    "key": "risk_based_cet1_gses",
+    "name": "GSE Risk Based Capital",
+    "status": "confirmed",
+    "description": "GNMA Total Maximum Exposure to Loss multiplied by the 17% risk weight and the 4.5% minimum CET1 capital ratio required of Fannie Mae and Freddie Mac.",
+    "formula": "gnma_total_exposure * risk_weight_pct * minimum_cet1_ratio_pct",
+    "assumptions": {
+      "risk_weight_pct": "0.17",
+      "minimum_cet1_ratio_pct": "0.045"
+    },
+    "assumption_meta": {
+      "risk_weight_pct": {
+        "label": "Risk weight",
+        "unit": "fraction (0.17 = 17%)",
+        "min": "0",
+        "max": "1",
+        "min_exclusive": true
+      },
+      "minimum_cet1_ratio_pct": {
+        "label": "Minimum CET1 capital ratio",
+        "unit": "fraction (0.045 = 4.5%)",
+        "min": "0",
+        "max": "1",
+        "min_exclusive": true
+      }
+    },
+    "reference": "Business specification: GSE Risk Based Capital = GNMA Total Maximum Exposure to Loss × 17% risk weight × 4.5% minimum CET1 capital ratio (Fannie Mae/Freddie Mac)."
+  },
+  {
+    "number": 3,
+    "key": "fhlb_min_capital_gnma",
+    "name": "FHLB Minimum Regulatory Capital (GNMA)",
+    "status": "confirmed",
+    "description": "GNMA Total Maximum Exposure to Loss multiplied by the 17% credit risk density and the FHLBs' regulatory capital ratio, minimum requirement.",
+    "formula": "gnma_total_exposure * credit_risk_density_pct * fhlb_regulatory_capital_min_ratio",
+    "assumptions": {
+      "credit_risk_density_pct": "0.17"
+    },
+    "assumption_meta": {
+      "credit_risk_density_pct": {
+        "label": "Credit risk density",
+        "unit": "fraction (0.17 = 17%)",
+        "min": "0",
+        "max": "1",
+        "min_exclusive": true
+      }
+    },
+    "reference": "Business specification: Benchmark 3 = GNMA Total Maximum Exposure to Loss × 17% credit risk density × FHLBs regulatory capital ratio, minimum requirement."
+  },
+  {
+    "number": 4,
+    "key": "fha_min_capital_gnma",
+    "name": "FHA Minimum Capital Requirement",
+    "status": "confirmed",
+    "description": "GNMA Total Maximum Exposure to Loss multiplied by the 25% GNMA position in line (4th in the loss hierarchy) if losses occur and the 2% FHA minimum capital requirement.",
+    "formula": "gnma_total_exposure * position_in_line_pct * fha_min_capital_pct",
+    "assumptions": {
+      "position_in_line_pct": "0.25",
+      "fha_min_capital_pct": "0.02"
+    },
+    "assumption_meta": {
+      "position_in_line_pct": {
+        "label": "GNMA position in line (4th in loss hierarchy) if losses occur",
+        "unit": "fraction (0.25 = 25%)",
+        "min": "0",
+        "max": "1",
+        "min_exclusive": true
+      },
+      "fha_min_capital_pct": {
+        "label": "FHA minimum capital requirement",
+        "unit": "fraction (0.02 = 2%)",
+        "min": "0",
+        "max": "1",
+        "min_exclusive": true
+      }
+    },
+    "reference": "Business specification: Benchmark 4 = GNMA Total Maximum Exposure to Loss × 25% GNMA position in line (4th in the loss hierarchy) if losses occur × 2% FHA minimum capital requirement."
+  },
+  {
+    "number": 5,
+    "key": "fhlb_actual_rbc_gnma",
+    "name": "FHLB Actual Risk Based Capital (GNMA)",
+    "status": "confirmed",
+    "description": "GNMA Total Maximum Exposure to Loss multiplied by the 17% credit risk density and the FHLBs' Actual Risk Based Capital Ratio (derived) of the Combined row.",
+    "formula": "gnma_total_exposure * credit_risk_density_pct * fhlb_combined_actual_rbc_ratio",
+    "assumptions": {
+      "credit_risk_density_pct": "0.17"
+    },
+    "assumption_meta": {
+      "credit_risk_density_pct": {
+        "label": "Credit risk density",
+        "unit": "fraction (0.17 = 17%)",
+        "min": "0",
+        "max": "1",
+        "min_exclusive": true
+      }
+    },
+    "reference": "Business specification: Benchmark 5 = GNMA Total Maximum Exposure to Loss × 17% credit risk density × FHLBs Actual Risk Based Capital Ratio (derived), Combined row."
+  },
+  {
+    "number": 6,
+    "key": "benchmark_6",
+    "name": "Benchmark 6 (definition required)",
+    "status": "unconfirmed",
+    "description": "Formula and assumptions have not been established. Supply them in config/benchmarks.json (status \"confirmed\") after business sign-off.",
+    "formula": null,
+    "assumptions": {},
+    "assumption_meta": {},
+    "reference": "No definition supplied; requires business confirmation."
+  },
+  {
+    "number": 7,
+    "key": "benchmark_7",
+    "name": "Benchmark 7 (definition required)",
+    "status": "unconfirmed",
+    "description": "Formula and assumptions have not been established. Supply them in config/benchmarks.json (status \"confirmed\") after business sign-off.",
+    "formula": null,
+    "assumptions": {},
+    "assumption_meta": {},
+    "reference": "No definition supplied; requires business confirmation."
+  },
+  {
+    "number": 8,
+    "key": "benchmark_8",
+    "name": "Benchmark 8 (definition required)",
+    "status": "unconfirmed",
+    "description": "Formula and assumptions have not been established. Supply them in config/benchmarks.json (status \"confirmed\") after business sign-off.",
+    "formula": null,
+    "assumptions": {},
+    "assumption_meta": {},
+    "reference": "No definition supplied; requires business confirmation."
+  },
+  {
+    "number": 9,
+    "key": "benchmark_9",
+    "name": "Benchmark 9 (definition required)",
+    "status": "unconfirmed",
+    "description": "Formula and assumptions have not been established. Supply them in config/benchmarks.json (status \"confirmed\") after business sign-off.",
+    "formula": null,
+    "assumptions": {},
+    "assumption_meta": {},
+    "reference": "No definition supplied; requires business confirmation."
+  },
+  {
+    "number": 10,
+    "key": "benchmark_10",
+    "name": "Benchmark 10 (definition required)",
+    "status": "unconfirmed",
+    "description": "Formula and assumptions have not been established. Supply them in config/benchmarks.json (status \"confirmed\") after business sign-off.",
+    "formula": null,
+    "assumptions": {},
+    "assumption_meta": {},
+    "reference": "No definition supplied; requires business confirmation."
+  }
+]

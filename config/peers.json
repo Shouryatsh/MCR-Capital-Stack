@@ -1,0 +1,52 @@
+[
+  {
+    "slot": 1,
+    "name": "Fannie Mae",
+    "provider": "Fannie Mae"
+  },
+  {
+    "slot": 2,
+    "name": "Freddie Mac",
+    "provider": "Freddie Mac"
+  },
+  {
+    "slot": 3,
+    "name": "",
+    "provider": ""
+  },
+  {
+    "slot": 4,
+    "name": "",
+    "provider": ""
+  },
+  {
+    "slot": 5,
+    "name": "",
+    "provider": ""
+  },
+  {
+    "slot": 6,
+    "name": "",
+    "provider": ""
+  },
+  {
+    "slot": 7,
+    "name": "",
+    "provider": ""
+  },
+  {
+    "slot": 8,
+    "name": "",
+    "provider": ""
+  },
+  {
+    "slot": 9,
+    "name": "",
+    "provider": ""
+  },
+  {
+    "slot": 10,
+    "name": "",
+    "provider": ""
+  }
+]

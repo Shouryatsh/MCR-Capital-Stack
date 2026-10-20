@@ -1,0 +1,85 @@
+{
+  "Fannie Mae": {
+    "kind": "pdf",
+    "detect": [
+      "Federal National Mortgage Association",
+      "Fannie Mae"
+    ],
+    "fields": {
+      "CET1_amount": {
+        "table_title": "capital metrics under the enterprise regulatory capital framework",
+        "anchor_regex": "^common equity\\b",
+        "end_word": "capital",
+        "n_cells": 6,
+        "integer_cells": 3,
+        "cell_index": 1,
+        "column_name": "Minimum Capital Requirement",
+        "line_item": "Common equity tier 1 capital"
+      },
+      "Adjusted_total_assets": {
+        "table_title": "tier 1 leverage ratio",
+        "anchor_regex": "adjusted total assets \\(sum of lines 1 to 6\\)",
+        "x_min": 400,
+        "cell_index": -1,
+        "line_item": "Line 7 \u00b7 Adjusted total assets (sum of lines 1 to 6)",
+        "table_note": "Part 1"
+      }
+    },
+    "checks": {
+      "rwa": {
+        "table_title": "capital metrics under the enterprise regulatory capital framework",
+        "mode": "adjacent",
+        "anchor_regex": "^risk-weighted",
+        "line_item": "Risk-weighted assets"
+      },
+      "ata_crosscheck": {
+        "table_title": "capital metrics under the enterprise regulatory capital framework",
+        "mode": "adjacent",
+        "anchor_regex": "^adjusted total\\b",
+        "line_item": "Adjusted total assets"
+      }
+    }
+  },
+  "Freddie Mac": {
+    "kind": "pdf",
+    "detect": [
+      "Federal Home Loan Mortgage Corporation",
+      "Freddie Mac"
+    ],
+    "fields": {
+      "CET1_amount": {
+        "table_title": "ercf available capital and capital requirements",
+        "anchor_regex": "^cet1 capital",
+        "end_word": "capital",
+        "n_cells": 5,
+        "integer_cells": 5,
+        "cell_index": 0,
+        "column_name": "Minimum Capital Requirement",
+        "line_item": "CET1 capital"
+      },
+      "Adjusted_total_assets": {
+        "table_title": "reconciliation of accounting total assets to adjusted total assets",
+        "anchor_regex": "^adjusted total assets",
+        "x_min": 400,
+        "cell_index": -1,
+        "line_item": "Adjusted Total Assets"
+      }
+    },
+    "checks": {
+      "rwa": {
+        "table_title": "adjusted total assets and standardized risk-weighted assets",
+        "anchor_regex": "^risk-weighted assets",
+        "x_min": 400,
+        "cell_index": -1,
+        "line_item": "Risk-weighted Assets (Standardized Approach)"
+      },
+      "ata_crosscheck": {
+        "table_title": "adjusted total assets and standardized risk-weighted assets",
+        "anchor_regex": "^adjusted total assets",
+        "x_min": 400,
+        "cell_index": -1,
+        "line_item": "Adjusted Total Assets"
+      }
+    }
+  }
+}

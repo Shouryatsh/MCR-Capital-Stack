@@ -1,0 +1,14 @@
+requests
+beautifulsoup4
+lxml
+pdfplumber
+pandas
+plotly
+streamlit
+openpyxl
+psutil
+pytest
+pymupdf   # tests only
+fastapi
+uvicorn
+httpx   # tests only (FastAPI TestClient)
